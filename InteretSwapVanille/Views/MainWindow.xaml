@@ -1,0 +1,41 @@
+﻿<Window x:Class="InteretSwapVanille.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InteretSwapVanille"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Swap">
+                    <MenuItem Header="_Nouveau" Command="{Binding CommandAfficherNouveau}" />
+                    <MenuItem Header="Information" Command="{Binding CommandAfficherListeTaux}" />
+                </MenuItem>
+            </Menu>
+
+            <Grid Background="AliceBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <DataGrid Grid.Row="1" Grid.Column="0" IsReadOnly="True" ItemsSource="{Binding Path=ListeDiscount}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Taux"  Binding="{Binding Path=Taux}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Discount" Binding="{Binding Path=Discount}"></DataGridTextColumn>
+                     </DataGrid.Columns>
+                </DataGrid>
+                <Button  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Height="70" Content="Sauver" Command="{Binding CommandSauvegarde}"></Button>
+            </Grid>
+            
+        </DockPanel>
+    </Grid>
+</Window>
